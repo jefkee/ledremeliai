@@ -1,4 +1,3 @@
-# ledremeliai
-
-ledremeliai.lt - website  
-Minimal to no AI used
+# ledremeliai.lt
+  
+Minimal to no AI used in development 
