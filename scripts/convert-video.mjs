@@ -1,6 +1,5 @@
-// One-time video conversion script
-// Converts ../IMG_2086.mov → public/video/product.mp4 + product.webm
-// Uses ffmpeg-static so no system ffmpeg is needed.
+// Convert background_vid.mov → product.mp4 + product.webm
+// Source: public/video/background_vid.mov (already plate-blurred)
 
 import { execFileSync } from 'child_process'
 import { mkdirSync, existsSync } from 'fs'
@@ -10,7 +9,7 @@ import ffmpegPath from 'ffmpeg-static'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const input  = resolve(__dirname, '../../IMG_2086.mov')
+const input  = resolve(__dirname, '../public/background_vid.mov')
 const outDir = resolve(__dirname, '../public/video')
 
 if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
@@ -18,19 +17,19 @@ if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
 const mp4Out  = resolve(outDir, 'product.mp4')
 const webmOut = resolve(outDir, 'product.webm')
 
-console.log('🎬 Converting to MP4 (H.264, near-lossless)…')
+console.log('🎬 Encoding MP4 (H.264, near-lossless)…')
 execFileSync(ffmpegPath, [
   '-i', input,
   '-c:v', 'libx264',
   '-crf', '18',
   '-preset', 'slow',
   '-movflags', '+faststart',
-  '-an',          // no audio
-  '-y',           // overwrite
+  '-an',
+  '-y',
   mp4Out,
 ], { stdio: 'inherit' })
 
-console.log('🎬 Converting to WebM (VP9 fallback)…')
+console.log('\n🎬 Encoding WebM (VP9 fallback)…')
 execFileSync(ffmpegPath, [
   '-i', input,
   '-c:v', 'libvpx-vp9',
@@ -41,4 +40,4 @@ execFileSync(ffmpegPath, [
   webmOut,
 ], { stdio: 'inherit' })
 
-console.log('✅ Done! Videos written to public/video/')
+console.log('\n✅ Done! product.mp4 + product.webm written to public/video/')

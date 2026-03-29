@@ -20,5 +20,5 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Video assets (large files — keep originals out of git)
-public/video/
+# Original source video (keep the raw .mov out of git)
+*.mov
