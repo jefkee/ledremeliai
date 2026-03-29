@@ -66,12 +66,12 @@ export default function VideoBackground() {
   return (
     <div className="video-bg-wrap">
       <video ref={videoARef} autoPlay {...videoProps}>
-        <source src="/video/product.mp4"  type="video/mp4" />
-        <source src="/video/product.webm" type="video/webm" />
+        <source src={`${import.meta.env.BASE_URL}video/product.mp4`}  type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}video/product.webm`} type="video/webm" />
       </video>
       <video ref={videoBRef} {...videoProps}>
-        <source src="/video/product.mp4"  type="video/mp4" />
-        <source src="/video/product.webm" type="video/webm" />
+        <source src={`${import.meta.env.BASE_URL}video/product.mp4`}  type="video/mp4" />
+        <source src={`${import.meta.env.BASE_URL}video/product.webm`} type="video/webm" />
       </video>
       <div className="video-overlay" />
     </div>
