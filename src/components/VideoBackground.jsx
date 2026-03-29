@@ -3,6 +3,11 @@ import { useEffect, useRef } from 'react'
 // How many seconds before the end to start crossfading to the next video
 const CROSSFADE_LEAD = 1.5
 
+// Normalize base URL — strip trailing slash so we can always do `${base}/video/...`
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+const MP4  = `${base}/video/product.mp4`
+const WEBM = `${base}/video/product.webm`
+
 export default function VideoBackground() {
   const videoARef = useRef(null)
   const videoBRef = useRef(null)
@@ -66,12 +71,12 @@ export default function VideoBackground() {
   return (
     <div className="video-bg-wrap">
       <video ref={videoARef} autoPlay {...videoProps}>
-        <source src={`${import.meta.env.BASE_URL}video/product.mp4`}  type="video/mp4" />
-        <source src={`${import.meta.env.BASE_URL}video/product.webm`} type="video/webm" />
+        <source src={MP4}  type="video/mp4" />
+        <source src={WEBM} type="video/webm" />
       </video>
       <video ref={videoBRef} {...videoProps}>
-        <source src={`${import.meta.env.BASE_URL}video/product.mp4`}  type="video/mp4" />
-        <source src={`${import.meta.env.BASE_URL}video/product.webm`} type="video/webm" />
+        <source src={MP4}  type="video/mp4" />
+        <source src={WEBM} type="video/webm" />
       </video>
       <div className="video-overlay" />
     </div>
