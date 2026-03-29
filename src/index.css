@@ -1,0 +1,389 @@
+/* ============================================================
+   LedRemeliai — Design System
+   ============================================================ */
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors */
+  --color-bg:         #080808;
+  --color-text:       #f5f5f5;
+  --color-muted:      rgba(245, 245, 245, 0.50);
+  --color-accent:     #c0392b;
+  --color-accent-h:   #e74c3c;
+  --color-surface:    rgba(8, 8, 8, 0.52);
+  --color-border:     rgba(255, 255, 255, 0.10);
+  --color-input-bg:   rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Misc */
+  --radius-sm:    8px;
+  --radius-md:    14px;
+  --radius-pill:  100px;
+  --blur-glass:   blur(24px) saturate(160%);
+  --transition:   0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Video Background
+   ============================================================ */
+
+.video-bg-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-bg-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 1.2s ease;
+}
+
+.video-bg-wrap .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.08) 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 28px 48px;
+}
+
+.header-logo {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.15rem;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* Language Switcher */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  color: var(--color-muted);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+  transition-property: background, color;
+}
+
+.lang-btn.active {
+  background: var(--color-text);
+  color: #080808;
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--color-text);
+}
+
+/* ============================================================
+   Hero Section
+   ============================================================ */
+
+.hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: clamp(80px, 14vh, 130px);
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-text);
+  animation: fadeUp 0.9s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-top: 16px;
+  animation: fadeUp 0.9s 0.12s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+.hero-form-wrap {
+  margin-top: 48px;
+  width: 100%;
+  max-width: 420px;
+  animation: fadeUp 0.9s 0.22s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   Waitlist Card
+   ============================================================ */
+
+.waitlist-card {
+  background: var(--color-surface);
+  backdrop-filter: var(--blur-glass);
+  -webkit-backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 40px 36px 36px;
+}
+
+/* Type Toggle */
+.type-toggle {
+  display: flex;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.type-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  padding: 8px 0;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+  transition-property: background, color;
+}
+
+.type-btn.active {
+  background: #fff;
+  color: #080808;
+}
+
+.type-btn:hover:not(.active) {
+  color: var(--color-text);
+}
+
+/* Input Field */
+.input-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input-wrap input {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  font-weight: 300;
+  padding: 18px 16px 8px;
+  outline: none;
+  transition: border-color var(--transition);
+  -webkit-autofill: unset;
+}
+
+.input-wrap input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #111 inset;
+  -webkit-text-fill-color: var(--color-text);
+}
+
+.input-wrap input:focus {
+  border-color: rgba(255,255,255,0.30);
+}
+
+.input-wrap.success input {
+  border-color: var(--color-accent);
+}
+
+.input-wrap label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-muted);
+  pointer-events: none;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+.input-wrap input:focus + label,
+.input-wrap input:not(:placeholder-shown) + label {
+  top: 30%;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: rgba(245,245,245,0.40);
+}
+
+/* CTA Button */
+.cta-btn {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #080808;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 16px;
+  margin-top: 8px;
+  overflow: hidden;
+  transition: color var(--transition);
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.38s cubic-bezier(0.4,0,0.2,1);
+}
+
+.cta-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.cta-btn:hover {
+  color: #fff;
+}
+
+.cta-btn:active {
+  transform: scale(0.98);
+}
+
+.cta-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn.submitted {
+  background: var(--color-accent);
+  color: #fff;
+  pointer-events: none;
+}
+
+.cta-btn.submitted::before {
+  display: none;
+}
+
+/* Legal */
+.legal-text {
+  margin-top: 16px;
+  font-size: 0.70rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Mobile
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 20px;
+  }
+
+  .hero {
+    padding: 90px 16px 40px;
+  }
+
+  .waitlist-card {
+    padding: 32px 20px 28px;
+  }
+
+  .hero-form-wrap {
+    max-width: 100%;
+  }
+}
