@@ -2,6 +2,14 @@
    LedRemeliai — Design System
    ============================================================ */
 
+@font-face {
+  font-family: 'Braaap';
+  src: url('./fonts/Braaap_S2.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -21,7 +29,7 @@
   --color-input-bg:   rgba(255, 255, 255, 0.05);
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Braaap', 'Cormorant Garamond', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
 
   /* Misc */
@@ -158,9 +166,9 @@ html, body, #root {
 
 .hero-title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: normal;
   font-size: clamp(3.5rem, 10vw, 8rem);
-  letter-spacing: 0.25em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   line-height: 1;
   color: var(--color-text);

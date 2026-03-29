@@ -9,7 +9,7 @@ import ffmpegPath from 'ffmpeg-static'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const input  = resolve(__dirname, '../public/background_vid.mov')
+const input  = resolve(__dirname, '../public/video/background_vid.mov')
 const outDir = resolve(__dirname, '../public/video')
 
 if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true })
